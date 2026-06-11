@@ -1,4 +1,4 @@
-# Système de Recommandation E-commerce
+﻿# Système de Recommandation E-commerce
 
 > **Filtrage collaboratif, SVD et stratégie cold start sur 10 000 utilisateurs simulés**
 
@@ -114,9 +114,9 @@ ALS (Alternating Least Squares). Neural CF. Déploiement API temps réel.
 
 ---
 
-## Auteur
+## Contributors
 
-**Emmanuel TSAGUE** — Data Scientist / Data Analyst
+**TSAGUE Emmanuel** — Data Scientist / Data Analyst
 Domaine : E-commerce · Machine Learning · RecSys
 GitHub : [TSAGUE25](https://github.com/TSAGUE25)
 
