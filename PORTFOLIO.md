@@ -1,14 +1,13 @@
 # CAS D'USAGE 14 — Système de Recommandation
 ## Recommander des produits pertinents par filtrage collaboratif et contenu
 
-> **Auteur :** Emmanuel TSAGUE — Data Scientist / Data Analyst  
+> **Auteur :** TSAGUE EMMANUEL — Data Scientist / Data Analyst  
 > **Domaine :** Recommandation, NLP basique, Algèbre linéaire appliquée  
 > **Repository GitHub :** `recommendation-system-portfolio`  
 > **Statut :** Portfolio — données simulées  
 > **Date :** Juin 2026
 
 ---
-
 ## 1. TITRE ET RÉSUMÉ EXÉCUTIF
 
 **"Système de recommandation e-commerce : filtrage collaboratif user-based + filtrage contenu + gestion du cold start"**
@@ -20,7 +19,6 @@ Ce projet construit un système de recommandation pour un site e-commerce simul�
 **Résultats simulés :** Precision@10 = 0,31 | Recall@10 = 0,24 | NDCG@10 = 0,38.
 
 ---
-
 ## 2. LES DEUX GRANDES FAMILLES D'APPROCHES
 
 > **Filtrage collaboratif (Collaborative Filtering — CF) :** "Les utilisateurs qui ont aimé les mêmes produits que toi ont aussi aimé X → je te recommande X." Ne nécessite pas de connaître le contenu des produits. Requiert des données d'interaction (achats, notes, clics).
@@ -38,7 +36,6 @@ Ce projet construit un système de recommandation pour un site e-commerce simul�
 > **Cold Start :** problème des nouveaux utilisateurs (pas d'historique) ou nouveaux produits (pas d'interactions). Algorithme hybride ou règles métier pour pallier.
 
 ---
-
 ## 3. GÉNÉRATION DES DONNÉES SIMULÉES
 
 ```python
@@ -84,7 +81,6 @@ df_items = pd.DataFrame({
 ```
 
 ---
-
 ## 4. FILTRAGE COLLABORATIF — USER-BASED (KNN)
 
 > **User-Based CF :** pour recommander à l'utilisateur A, on cherche les utilisateurs "similaires" à A (voisins), puis on recommande ce qu'ils ont aimé et que A n'a pas encore vu.
@@ -155,7 +151,6 @@ print(f"Recommandations pour l'utilisateur 42 : {reco}")
 ```
 
 ---
-
 ## 5. FILTRAGE COLLABORATIF — FACTORISATION MATRICIELLE
 
 > **Factorisation matricielle (Matrix Factorization) :** décompose la matrice utilisateurs × items en deux matrices plus petites : une matrice utilisateurs × facteurs_latents et une matrice items × facteurs_latents. Chaque utilisateur et item est représenté par un vecteur de facteurs latents (embeddings). La recommandation = produit scalaire de ces vecteurs.
@@ -196,7 +191,6 @@ def recommander_svd(user_id, n_reco=10):
 ```
 
 ---
-
 ## 6. FILTRAGE PAR CONTENU
 
 ```python
@@ -231,7 +225,6 @@ def recommander_content_based(item_id, n_reco=10):
 ```
 
 ---
-
 ## 7. ÉVALUATION — PRECISION@K ET RECALL@K
 
 > **Precision@K :** parmi les K items recommandés, quelle proportion est vraiment pertinente ?
@@ -274,7 +267,6 @@ print(f"SVD            | Precision : {p_svd:.4f} | Recall : {r_svd:.4f}")
 ```
 
 ---
-
 ## 8. COLD START — STRATÉGIE HYBRIDE
 
 ```python
@@ -314,7 +306,6 @@ def recommander_hybride(user_id, n_reco=10):
 ```
 
 ---
-
 ## 9. ARCHITECTURE GITHUB
 
 ```
@@ -336,64 +327,6 @@ recommendation-system-portfolio/
 ```
 
 ---
-
-## 10. README GITHUB
-
-```markdown
-# Recommendation System — Portfolio
-## Filtrage collaboratif + contenu + cold start sur e-commerce simulé
-
-> **Auteur :** Emmanuel TSAGUE | **Données :** simulées
-
-## Approches
-User-Based CF · SVD Matrix Factorization · TF-IDF Content-Based · Hybrid Cold Start
-
-## Résultats (simulés)
-Precision@10 = 0.31 · Recall@10 = 0.24 · NDCG@10 = 0.38
-```
-
----
-
-## 11. VERSION CV
-
-> Système de recommandation e-commerce sur 10 000 utilisateurs / 500 produits simulés : filtrage collaboratif user-based (cosine similarity), factorisation matricielle SVD (50 facteurs latents), filtrage contenu TF-IDF, stratégie hybride cold start, évaluation Precision@K / Recall@K / NDCG@K — Python, sklearn, scipy.sparse.
-
----
-
-## 12. VERSION ENTRETIEN
-
-"J'ai implémenté trois approches pour un système de recommandation. Le filtrage collaboratif user-based calcule la similarité cosinus entre profils d'utilisateurs et recommande ce que les voisins ont aimé. La factorisation matricielle SVD décompose la matrice utilisateurs × items en facteurs latents — c'est plus scalable. Le filtrage contenu utilise TF-IDF sur les descriptions produits enrichi de features numériques. Pour le cold start, j'ai défini une stratégie hybride : popularité globale pour les nouveaux utilisateurs, contenu pour le warm start, et collaboratif pour les utilisateurs établis. La métrique principale est Precision@10 — parmi les 10 recommandations, combien sont dans les items que l'utilisateur a effectivement consultés dans la période de test."
-
----
-
-## 13. POST LINKEDIN
-
-**Netflix a 250 millions d'abonnés. Comment recommande-t-il à chacun ?**
-
-Pas avec une liste manuelle.
-
-J'ai construit un système de recommandation e-commerce qui couvre les trois approches fondamentales :
-
-1. **Filtrage collaboratif** : les utilisateurs qui vous ressemblent ont aimé ça → similarité cosinus
-2. **Factorisation matricielle** : SVD décompose les comportements en facteurs latents → embeddings
-3. **Filtrage contenu** : les produits similaires à ce que vous avez aimé → TF-IDF
-
-Défi traité : le cold start. Un nouvel utilisateur sans historique ? La stratégie hybride répond différemment selon le niveau de connaissance de l'utilisateur.
-
-`#MachineLearning` `#Recommandation` `#CollaborativeFiltering` `#SVD` `#DataScience`
-
----
-
-## 14. QUESTIONS D'ENTRETIEN
-
-**Q : Pourquoi la factorisation matricielle est-elle meilleure que le CF user-based à grande échelle ?**
-> Le CF user-based calcule la similarité entre tous les paires d'utilisateurs — O(N²) en espace et en calcul. Pour 100M d'utilisateurs, c'est impossible. La factorisation matricielle réduit chaque utilisateur et item à un vecteur de 50-200 dimensions, et la recommandation se réduit à un produit scalaire — O(N×K) avec K << N.
-
-**Q : Comment mesurer la qualité d'un système de recommandation offline ?**
-> On utilise un split temporel : on entraîne sur les interactions jusqu'à la date T, et on évalue sur les interactions après T. Métriques : Precision@K (qualité), Recall@K (couverture), NDCG@K (qualité du classement). Le split temporal évite de voir le futur pendant l'entraînement.
-
----
-
 ## 15. COMPÉTENCES DÉMONTRÉES
 
 | Compétence | Preuve |
@@ -406,4 +339,22 @@ Défi traité : le cold start. Un nouvel utilisateur sans historique ? La strat�
 
 ---
 
-*Fin du document — Emmanuel TSAGUE — CAS 14 — Système de Recommandation*
+*Fin du document — TSAGUE EMMANUEL — CAS 14 — Système de Recommandation*
+---
+
+## Contact & Liens
+
+**TSAGUE EMMANUEL** - Data Scientist
+
+| | |
+|---|---|
+| Email | [emmatsague@yahoo.fr](mailto:emmatsague@yahoo.fr) |
+| GitHub | [github.com/TSAGUE25](https://github.com/TSAGUE25) |
+| Formation | Datascientest 2024 |
+| Experience | EDF MAD EDVANCE |
+| Domaines | Machine Learning - Data Analysis - Energie |
+
+---
+
+> Toutes les donnees de ce depot sont simulees et anonymisees.  
+> Aucune donnee reelle ou confidentielle n'est presente.

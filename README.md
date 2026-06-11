@@ -116,8 +116,9 @@ ALS (Alternating Least Squares). Neural CF. Déploiement API temps réel.
 
 ## Contributors
 
-**TSAGUE Emmanuel** — Data Scientist / Data Analyst
-Domaine : E-commerce · Machine Learning · RecSys
-GitHub : [TSAGUE25](https://github.com/TSAGUE25)
+**TSAGUE EMMANUEL** - Data Scientist  
+Specialise en Machine Learning, Data Analysis et systemes decisionnels.  
+Formation Datascientest 2024 | EDF MAD EDVANCE  
+Email : [emmatsague@yahoo.fr](mailto:emmatsague@yahoo.fr)  
+GitHub : [github.com/TSAGUE25](https://github.com/TSAGUE25)
 
-> Voir [PORTFOLIO.md](PORTFOLIO.md) pour la documentation complète du cas d'usage (24 sections).
